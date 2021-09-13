@@ -4,6 +4,8 @@
 namespace Entity;
 
 
+use Model\UserManager;
+
 class Post
 {
     private $id;
@@ -45,10 +47,11 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return User
      */
-    public function getAuthor()
+    public function getAuthor(): User
     {
-        return $this->author;
+        $manager = new UserManager();
+        return $manager->getUserById($this->author);
     }
 }

@@ -8,6 +8,10 @@ use Entity\User;
 
 class UserManager extends BaseManager
 {
+    /**
+     * @param int $id
+     * @return User|bool
+     */
     public function getUserById(int $id)
     {
         $query = $this->db->prepare('SELECT * FROM users WHERE id = :id');
@@ -17,6 +21,10 @@ class UserManager extends BaseManager
         return $query->fetch();
     }
 
+    /**
+     * @param string $email
+     * @return User|bool
+     */
     public function getUserByEmail(string $email)
     {
         $query = $this->db->prepare('SELECT * FROM users WHERE email = :email');

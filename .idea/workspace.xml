@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/UserManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vendor/Core/Flash.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Security/login.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/cours_mvc/posts.frm" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/posts.frm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ddl_recovery.log" beforeDir="false" afterPath="$PROJECT_DIR$/database/ddl_recovery.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_logfile0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/src/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config/routes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/routes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vendor/Core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vendor/Core/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Frontend/index.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Frontend/index.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PostManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PostManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserManager.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631476083490</updated>
       <workItem from="1631476088908" duration="61000" />
-      <workItem from="1631476154711" duration="20643000" />
+      <workItem from="1631476154711" duration="21587000" />
     </task>
     <servers />
   </component>

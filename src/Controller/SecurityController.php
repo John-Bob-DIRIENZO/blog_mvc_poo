@@ -37,6 +37,9 @@ class SecurityController extends BaseController
 
     }
 
+    /**
+     * @param User $user
+     */
     private function logUser(User $user): void
     {
         $_SESSION['logged_user'] = serialize($user);

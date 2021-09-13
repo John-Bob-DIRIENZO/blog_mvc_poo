@@ -8,6 +8,10 @@ use Entity\Post;
 
 class PostManager extends BaseManager
 {
+    /**
+     * @param int|null $number
+     * @return array
+     */
     public function getPosts(int $number = null): array
     {
         if ($number) {
@@ -22,6 +26,10 @@ class PostManager extends BaseManager
         return $query->fetchAll();
     }
 
+    /**
+     * @param int $id
+     * @return Post|bool
+     */
     public function getPostById(int $id)
     {
         $query = $this->db->prepare('SELECT * FROM posts WHERE id = :id');
