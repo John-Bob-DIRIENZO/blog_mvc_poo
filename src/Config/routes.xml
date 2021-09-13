@@ -4,4 +4,8 @@
     <route p="" controller="FrontController" action="index"/>
     <route p="article" controller="FrontController" action="show"/>
     <!-- Admin -->
+    <route p="admin" controller="AdminController" action="index"/>
+    <!-- Security -->
+    <route p="login" controller="SecurityController" action="login"/>
+    <route p="logout" controller="SecurityController" action="logout"/>
 </routes>

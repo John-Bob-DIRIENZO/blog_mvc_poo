@@ -10,6 +10,7 @@ class Post
     private $date;
     private $title;
     private $content;
+    private $author;
 
     /**
      * @return mixed
@@ -17,14 +18,6 @@ class Post
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -36,27 +29,11 @@ class Post
     }
 
     /**
-     * @param mixed $date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    /**
      * @return mixed
      */
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * @param mixed $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
     }
 
     /**
@@ -68,10 +45,10 @@ class Post
     }
 
     /**
-     * @param mixed $content
+     * @return mixed
      */
-    public function setContent($content)
+    public function getAuthor()
     {
-        $this->content = $content;
+        return $this->author;
     }
 }

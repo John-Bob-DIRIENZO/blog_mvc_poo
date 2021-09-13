@@ -11,7 +11,9 @@ class FrontController extends BaseController
     public function executeIndex(int $number = 5)
     {
         $manager = new PostManager();
-        return $manager->getPosts($number);
+        $index = $manager->getPosts($number);
+
+        return $this->render('Page d\'accueil', $index, 'Frontend/index');
     }
 
     public function executeShow()
@@ -24,6 +26,6 @@ class FrontController extends BaseController
             exit();
         }
 
-        return $this->render('coucou', ['article' => $article], 'Frontend/index');
+        return $this->render($article->getTitle(), ['article' => $article], 'Frontend/show');
     }
 }
