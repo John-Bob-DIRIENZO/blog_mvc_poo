@@ -59,10 +59,10 @@ class CommentManager extends BaseManager
 
     public function addComment(Comment $comment): Comment
     {
-        $insert = $this->db->prepare('INSERT INTO comments (postId, authroId, content) VALUES (:postId, :authroId, :content)');
+        $insert = $this->db->prepare('INSERT INTO comments (postId, authorId, content) VALUES (:postId, :authorId, :content)');
         $insert->bindValue(':postId', $comment->getPostId(), \PDO::PARAM_INT);
-        $insert->bindValue(':authroId', $comment->getAuthorId(), \PDO::PARAM_INT);
-        $insert->bindValue(':content', $comment->getContent(), \PDO::PARAM_STR);
+        $insert->bindValue(':authorId', $comment->getAuthorId(), \PDO::PARAM_INT);
+        $insert->bindValue(':content', nl2br(htmlspecialchars($comment->getContent())), \PDO::PARAM_STR);
         $insert->execute();
 
         return $this->getCommentById($this->db->lastInsertId());
@@ -75,7 +75,7 @@ class CommentManager extends BaseManager
     public function updateComment(Comment $comment): Comment
     {
         $update = $this->db->prepare('UPDATE comments SET content = :content WHERE id = :id');
-        $update->bindValue(':content', $comment->getContent(), \PDO::PARAM_STR);
+        $update->bindValue(':content', nl2br(htmlspecialchars($comment->getContent())), \PDO::PARAM_STR);
         $update->bindValue(':id', $comment->getId(), \PDO::PARAM_INT);
         $update->execute();
 

@@ -138,7 +138,7 @@ class User extends BaseEntity
     public function getPosts(): array
     {
         $manager = new PostManager();
-        $manager->getPostsByAuthorId($this->id);
+        return $manager->getPostsByAuthorId($this->id);
     }
 
     /**
@@ -147,6 +147,6 @@ class User extends BaseEntity
     public function getComments(): array
     {
         $manager = new CommentManager();
-        $manager->getCommentsByAuthorId($this->id);
+        return $manager->getCommentsByAuthorId($this->id);
     }
 }

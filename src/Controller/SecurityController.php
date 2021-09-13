@@ -104,4 +104,16 @@ class SecurityController extends BaseController
 
         return false;
     }
+
+    /**
+     * @return User|null
+     */
+    public static function getLoggedUser()
+    {
+        if (isset($_SESSION['logged_user'])) {
+            return unserialize($_SESSION['logged_user']);
+        }
+
+        return null;
+    }
 }

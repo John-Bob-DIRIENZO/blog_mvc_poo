@@ -110,6 +110,6 @@ class Post extends BaseEntity
     public function getComments(): array
     {
         $manager = new CommentManager();
-        $manager->getCommentsByPostId($this->id);
+        return $manager->getCommentsByPostId($this->id);
     }
 }

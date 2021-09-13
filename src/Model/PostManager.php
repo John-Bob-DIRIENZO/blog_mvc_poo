@@ -60,8 +60,8 @@ class PostManager extends BaseManager
     public function addPost(Post $post): Post
     {
         $insert = $this->db->prepare('INSERT INTO posts (title, content, authorId) VALUES (:title, :content, :authorId)');
-        $insert->bindValue(':title', $post->getTitle(), \PDO::PARAM_STR);
-        $insert->bindValue(':content', $post->getContent(), \PDO::PARAM_STR);
+        $insert->bindValue(':title', nl2br(htmlspecialchars($post->getTitle())), \PDO::PARAM_STR);
+        $insert->bindValue(':content', nl2br(htmlspecialchars($post->getContent())), \PDO::PARAM_STR);
         $insert->bindValue(':authorId', $post->getAuthorId(), \PDO::PARAM_INT);
         $insert->execute();
 
@@ -75,8 +75,8 @@ class PostManager extends BaseManager
     public function updatePost(Post $post): Post
     {
         $update = $this->db->prepare('UPDATE posts SET title = :title, content = :content WHERE id =:id');
-        $update->bindValue(':title', $post->getTitle(), \PDO::PARAM_STR);
-        $update->bindValue(':content', $post->getContent(), \PDO::PARAM_STR);
+        $update->bindValue(':title', nl2br(htmlspecialchars($post->getTitle())), \PDO::PARAM_STR);
+        $update->bindValue(':content', nl2br(htmlspecialchars($post->getContent())), \PDO::PARAM_STR);
         $update->bindValue(':id', $post->getId(), \PDO::PARAM_INT);
         $update->execute();
 

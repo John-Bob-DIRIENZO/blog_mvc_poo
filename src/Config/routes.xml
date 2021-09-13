@@ -5,6 +5,8 @@
     <route p="article" controller="FrontController" action="show"/>
     <!-- Admin -->
     <route p="admin" controller="AdminController" action="index"/>
+    <route p="post-comment" controller="AdminController" action="postComment"/>
+    <route p="write-article" controller="AdminController" action="writePost"/>
     <!-- Security -->
     <route p="login" controller="SecurityController" action="login"/>
     <route p="logout" controller="SecurityController" action="logout"/>
