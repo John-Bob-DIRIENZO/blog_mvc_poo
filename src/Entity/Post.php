@@ -4,15 +4,16 @@
 namespace Entity;
 
 
+use Model\CommentManager;
 use Model\UserManager;
 
-class Post
+class Post extends BaseEntity
 {
     private $id;
     private $date;
     private $title;
     private $content;
-    private $author;
+    private $authorId;
 
     /**
      * @return mixed
@@ -23,9 +24,9 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
-    public function getDate()
+    public function getDate(): \DateTime
     {
         return new \DateTime($this->date);
     }
@@ -52,6 +53,63 @@ class Post
     public function getAuthor(): User
     {
         $manager = new UserManager();
-        return $manager->getUserById($this->author);
+        return $manager->getUserById($this->authorId);
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date): void
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param mixed $content
+     */
+    public function setContent($content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthorId()
+    {
+        return $this->authorId;
+    }
+
+    /**
+     * @param mixed $authorId
+     */
+    public function setAuthorId($authorId): void
+    {
+        $this->authorId = $authorId;
+    }
+
+    /**
+     * @return array
+     */
+    public function getComments(): array
+    {
+        $manager = new CommentManager();
+        $manager->getCommentsByPostId($this->id);
     }
 }

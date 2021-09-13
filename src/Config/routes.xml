@@ -8,4 +8,5 @@
     <!-- Security -->
     <route p="login" controller="SecurityController" action="login"/>
     <route p="logout" controller="SecurityController" action="logout"/>
+    <route p="signup" controller="SecurityController" action="signup"/>
 </routes>

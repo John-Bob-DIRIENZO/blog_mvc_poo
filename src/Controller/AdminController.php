@@ -11,6 +11,6 @@ class AdminController extends BaseController
     public function executeIndex()
     {
         $manager = new UserManager();
-        return var_dump(unserialize($_SESSION['logged_user'])->getRoles());
+        return var_dump(SecurityController::isAuthenticated());
     }
 }

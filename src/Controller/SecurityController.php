@@ -51,4 +51,57 @@ class SecurityController extends BaseController
         header('Location: /');
         exit();
     }
+
+    public function executeSignup()
+    {
+        if (empty($_POST['email']) || empty($_POST['password'])) {
+            return $this->render('Create a new user', [], 'Security/signup');
+        }
+
+        $manager = new UserManager();
+
+        if (!$manager->userExists($_POST['email']) && ($_POST['password'] === $_POST['password_check'])) {
+            $newUser = new User(array(
+                'firstName' => $_POST['firstName'],
+                'lastName' => $_POST['lastName'],
+                'email' => $_POST['email'],
+                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
+            ));
+
+            $this->logUser($manager->addUser($newUser));
+
+            header('Location: /');
+            exit();
+        }
+        elseif ($manager->userExists($_POST['email'])) {
+            Flash::setFlash('The user already exists');
+            header('Location: /signup');
+            exit();
+        }
+        elseif ($_POST['password'] !== $_POST['password_check']) {
+            Flash::setFlash('Passwords are not identical');
+            header('Location: /signup');
+            exit();
+        }
+        else {
+            Flash::setFlash('Unknown error');
+            header('Location: /signup');
+            exit();
+        }
+    }
+
+    /**
+     * Verify if there is a logged user
+     * and if it's legit
+     * @return bool
+     */
+    public static function isAuthenticated(): bool
+    {
+        if (isset($_SESSION['logged_user'])) {
+            $manager = new UserManager();
+            return $manager->userMatches(unserialize($_SESSION['logged_user']));
+        }
+
+        return false;
+    }
 }

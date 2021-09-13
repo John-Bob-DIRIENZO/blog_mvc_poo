@@ -2,10 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/BaseEntity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/CommentManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Vendor/Core/Hydrator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Security/signup.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/aria_log.00000001" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log.00000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/aria_log_control" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/posts.frm" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/posts.frm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/posts.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/posts.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/users.frm" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/users.frm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ddl_recovery.log" beforeDir="false" afterPath="$PROJECT_DIR$/database/ddl_recovery.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_buffer_pool" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_logfile0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/database/ibdata1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql/innodb_index_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql/innodb_table_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Config/routes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/routes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/PostManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PostManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/UserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserManager.php" afterDir="false" />
     </list>
@@ -19,6 +37,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1y3MzP8mJUgIYYCdAczn3BV7Yc3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -51,7 +77,8 @@
       <option name="presentableId" value="Default" />
       <updated>1631476083490</updated>
       <workItem from="1631476088908" duration="61000" />
-      <workItem from="1631476154711" duration="21587000" />
+      <workItem from="1631476154711" duration="21709000" />
+      <workItem from="1631519567471" duration="9235000" />
     </task>
     <servers />
   </component>
@@ -68,5 +95,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
