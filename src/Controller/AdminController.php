@@ -17,7 +17,7 @@ class AdminController extends BaseController
         if (SecurityController::isAuthenticated()) {
             return $this->render('Zone Admin', [], 'Admin/index');
         }
-        header('Location: /');
+        header('Location: /login');
         exit();
     }
 

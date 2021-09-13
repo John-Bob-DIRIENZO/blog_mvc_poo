@@ -3,7 +3,7 @@
 <p><small>Ecrit par : <?= $vars['article']->getAuthor()->getFirstName(); ?> <br/>
         Le : <?= $vars['article']->getDate()->format('Y/m/d à H:i:s'); ?></small></p>
 
-<?php if (\Controller\SecurityController::getLoggedUser()->havePostRights($vars['article'])) : ?>
+<?php if (\Controller\SecurityController::isAuthenticated() && \Controller\SecurityController::getLoggedUser()->havePostRights($vars['article'])) : ?>
     <a href="/delete-article/<?= $vars['article']->getId(); ?>">Delete article</a>
     <a href="/update-article/<?= $vars['article']->getId(); ?>">Update article</a>
 <?php endif; ?>
