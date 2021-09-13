@@ -14,7 +14,7 @@ class User extends BaseEntity
     private $lastName;
     private $email;
     private $password;
-    private $roles;
+    private $roles; // Should always be serialized here
 
     /**
      * @return mixed
@@ -113,7 +113,7 @@ class User extends BaseEntity
      */
     public function setPassword($password): void
     {
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     /**
@@ -121,7 +121,7 @@ class User extends BaseEntity
      */
     public function setRoles($roles): void
     {
-        $this->roles = $roles;
+        $this->roles = serialize($roles);
     }
 
     /**
@@ -148,5 +148,32 @@ class User extends BaseEntity
     {
         $manager = new CommentManager();
         return $manager->getCommentsByAuthorId($this->id);
+    }
+
+    /**
+     * @param bool $admin
+     * @return bool
+     */
+    public function setAdmin($admin): bool
+    {
+        if ($admin) {
+            $roles = unserialize($this->roles);
+            $roles[] .= 'ROLE_ADMIN';
+            $this->setRoles($roles);
+            return true;
+        }
+
+        $this->setRoles([]);
+        return false;
+    }
+
+    public function havePostRights(Post $post): bool
+    {
+        return $post->getAuthorId() === $this->id || $this->isAdmin();
+    }
+
+    public function haveCommentRights(Comment $comment): bool
+    {
+        return $comment->getAuthorId() === $this->id || $this->isAdmin();
     }
 }

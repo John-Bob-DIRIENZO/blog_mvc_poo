@@ -88,10 +88,10 @@ class UserManager extends BaseManager
     public function updateUser(User $user): User
     {
         $update = $this->db->prepare('UPDATE users SET firstName = :firstName, lastName = :lastName, password = :password, roles = :roles WHERE email = :email');
-        $update->bindValue(':firstName', $user->getFirstName(), \PDO::PARAM_STR);
-        $update->bindValue(':lastName', $user->getLastName(), \PDO::PARAM_STR);
-        $update->bindValue(':email', $user->getEmail(), \PDO::PARAM_STR);
-        $update->bindValue(':password', $user->getPassword(), \PDO::PARAM_STR);
+        $update->bindValue(':firstName', htmlspecialchars($user->getFirstName()), \PDO::PARAM_STR);
+        $update->bindValue(':lastName', htmlspecialchars($user->getLastName()), \PDO::PARAM_STR);
+        $update->bindValue(':email', htmlspecialchars($user->getEmail()), \PDO::PARAM_STR);
+        $update->bindValue(':password', htmlspecialchars($user->getPassword()), \PDO::PARAM_STR);
         $update->bindValue(':roles', $user->getRoles(), \PDO::PARAM_STR);
         $update->execute();
 
@@ -103,7 +103,7 @@ class UserManager extends BaseManager
      * @param string $email
      * @return bool
      */
-    public function deleteUser(string $email): bool
+    public function deleteUserByEmail(string $email): bool
     {
         $delete = $this->db->prepare('DELETE FROM users WHERE email = :email');
         $delete->bindValue(':email', $email, \PDO::PARAM_STR);
@@ -113,6 +113,25 @@ class UserManager extends BaseManager
 
         $postManager = new PostManager();
         $postManager->deletePostsByAuthorId($this->getUserByEmail($email)->getId());
+
+        return $delete->execute();
+    }
+
+    /**
+     * Deletes an user and all of its posts and comments
+     * @param int $id
+     * @return bool
+     */
+    public function deleteUserById(int $id): bool
+    {
+        $delete = $this->db->prepare('DELETE FROM users WHERE id = :id');
+        $delete->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        $commentManager = new CommentManager();
+        $commentManager->deleteCommentsByAuthorId($id);
+
+        $postManager = new PostManager();
+        $postManager->deletePostsByAuthorId($id);
 
         return $delete->execute();
     }

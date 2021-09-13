@@ -6,9 +6,15 @@
     <!-- Admin -->
     <route p="admin" controller="AdminController" action="index"/>
     <route p="post-comment" controller="AdminController" action="postComment"/>
+    <route p="delete-comment" controller="AdminController" action="deleteComment"/>
     <route p="write-article" controller="AdminController" action="writePost"/>
+    <route p="delete-article" controller="AdminController" action="deletePost"/>
+    <route p="update-article" controller="AdminController" action="updatePost"/>
+    <route p="userlist" controller="AdminController" action="userlist"/>
     <!-- Security -->
     <route p="login" controller="SecurityController" action="login"/>
     <route p="logout" controller="SecurityController" action="logout"/>
     <route p="signup" controller="SecurityController" action="signup"/>
+    <route p="update-user" controller="SecurityController" action="updateUser"/>
+    <route p="delete-user" controller="SecurityController" action="deleteUser"/>
 </routes>

@@ -65,7 +65,7 @@ class SecurityController extends BaseController
                 'firstName' => $_POST['firstName'],
                 'lastName' => $_POST['lastName'],
                 'email' => $_POST['email'],
-                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
+                'password' => $_POST['password']
             ));
 
             $this->logUser($manager->addUser($newUser));
@@ -88,6 +88,50 @@ class SecurityController extends BaseController
             header('Location: /signup');
             exit();
         }
+    }
+
+    public function executeUpdateUser()
+    {
+        if (self::isAuthenticated() && isset($_POST['userFirstName']) && isset($_POST['userLastName']) && ($_POST['userPassword'] === $_POST['userCheckPassword'])) {
+            $updatedUser = new User(array(
+                'firstName' => $_POST['userFirstName'],
+                'lastName' => $_POST['userLastName'],
+                'email' => self::getLoggedUser()->getEmail(),
+                'admin' => $_POST['userRole'],
+                'password' => $_POST['userPassword']
+            ));
+
+            $manager = new UserManager();
+            $this->logUser($manager->updateUser($updatedUser));
+
+            header('Location: /admin');
+            exit();
+        }
+        elseif (self::isAuthenticated() && isset($_POST['userFirstName']) && isset($_POST['userLastName']) && ($_POST['userPassword'] !== $_POST['userCheckPassword'])) {
+            Flash::setFlash('Passwords are not identical');
+            header('Location: /admin');
+            exit();
+        }
+        else {
+            Flash::setFlash('Unknown error');
+            header('Location: /');
+            exit();
+        }
+    }
+
+    public function executeDeleteUser()
+    {
+        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->isAdmin() && SecurityController::getLoggedUser()->getId() != $this->id) {
+            $userManager = new UserManager();
+            $userManager->deleteUserById($this->id);
+        }
+
+        if (SecurityController::getLoggedUser()->getId() == $this->id) {
+            Flash::setFlash('Please don\'t delete yourself, you\'ll break everything !');
+        }
+
+        header('Location: /userlist');
+        exit();
     }
 
     /**

@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Views/Admin/index.view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Admin/write-article.view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Admin/update-article.view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Admin/userlist.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_logfile0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Config/routes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/routes.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CommentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CommentManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/PostManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PostManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Admin/index.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Admin/index.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Admin/write-article.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Admin/write-article.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Security/login.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Security/login.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/template.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +69,7 @@
       <updated>1631476083490</updated>
       <workItem from="1631476088908" duration="61000" />
       <workItem from="1631476154711" duration="21709000" />
-      <workItem from="1631519567471" duration="12826000" />
+      <workItem from="1631519567471" duration="27587000" />
     </task>
     <servers />
   </component>

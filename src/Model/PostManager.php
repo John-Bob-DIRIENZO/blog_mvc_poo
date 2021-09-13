@@ -15,11 +15,11 @@ class PostManager extends BaseManager
     public function getPosts(int $number = null): array
     {
         if ($number) {
-            $query = $this->db->prepare('SELECT * FROM posts LIMIT :limit');
+            $query = $this->db->prepare('SELECT * FROM posts ORDER BY id DESC LIMIT :limit');
             $query->bindValue(':limit', $number, \PDO::PARAM_INT);
             $query->execute();
         } else {
-            $query = $this->db->query('SELECT * FROM posts');
+            $query = $this->db->query('SELECT * FROM posts ORDER BY id DESC');
         }
         $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
 
@@ -60,7 +60,7 @@ class PostManager extends BaseManager
     public function addPost(Post $post): Post
     {
         $insert = $this->db->prepare('INSERT INTO posts (title, content, authorId) VALUES (:title, :content, :authorId)');
-        $insert->bindValue(':title', nl2br(htmlspecialchars($post->getTitle())), \PDO::PARAM_STR);
+        $insert->bindValue(':title', htmlspecialchars($post->getTitle()), \PDO::PARAM_STR);
         $insert->bindValue(':content', nl2br(htmlspecialchars($post->getContent())), \PDO::PARAM_STR);
         $insert->bindValue(':authorId', $post->getAuthorId(), \PDO::PARAM_INT);
         $insert->execute();
@@ -75,7 +75,7 @@ class PostManager extends BaseManager
     public function updatePost(Post $post): Post
     {
         $update = $this->db->prepare('UPDATE posts SET title = :title, content = :content WHERE id =:id');
-        $update->bindValue(':title', nl2br(htmlspecialchars($post->getTitle())), \PDO::PARAM_STR);
+        $update->bindValue(':title', htmlspecialchars($post->getTitle()), \PDO::PARAM_STR);
         $update->bindValue(':content', nl2br(htmlspecialchars($post->getContent())), \PDO::PARAM_STR);
         $update->bindValue(':id', $post->getId(), \PDO::PARAM_INT);
         $update->execute();
