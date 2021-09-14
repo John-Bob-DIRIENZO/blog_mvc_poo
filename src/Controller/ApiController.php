@@ -14,14 +14,21 @@ class ApiController extends BaseController
     {
         $postManager = new PostManager();
         $userManager = new UserManager();
+
+        $user = $userManager->checkCredentials($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+        $postId = !empty($this->params['id']) ? $this->params['id'] : false;
+        $post = $postManager->postExists($postId) ? $postManager->getPostById($postId) : false;
+
+        parse_str(file_get_contents('php://input'), $_PUT);
+
         // GET
         if ($this->HTTPRequest->method() === 'GET') :
-            switch (empty($this->params['id'])) {
-                case true:
+            switch ($postId) {
+                case false:
                     return $this->renderJSON($postManager->getPosts(null, true));
 
-                case false:
-                    $post = $postManager->getPostById($this->params['id'], true);
+                case true:
+                    $post = $postManager->getPostById($postId, true);
                     if (empty($post)) {
                         return new ErrorController('noRoute');
                     }
@@ -30,8 +37,7 @@ class ApiController extends BaseController
         endif;
 
         // POST
-        if ($this->HTTPRequest->method() === 'POST' && empty($this->params['id'])) :
-            $user = $userManager->checkCredentials($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+        if ($this->HTTPRequest->method() === 'POST' && !$postId) :
 
             if ($user && !empty($_POST['title']) && !empty($_POST['content'])) {
                 $newPost = new Post(array(
@@ -48,12 +54,7 @@ class ApiController extends BaseController
         endif;
 
         // PUT (renvoyer toute l'entité)
-        if ($this->HTTPRequest->method() === 'PUT' && !empty($this->params['id']) && $postManager->postExists($this->params['id'])) :
-
-            $user = $userManager->checkCredentials($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-            $post = $postManager->getPostById($this->params['id']);
-
-            parse_str(file_get_contents('php://input'), $_PUT);
+        if ($this->HTTPRequest->method() === 'PUT' && $postId && $post) :
 
             if ($user && !empty($_PUT['title']) && !empty($_PUT['content']) && $user->havePostRights($post)) {
                 $post->setTitle($_PUT['title']);
@@ -67,9 +68,35 @@ class ApiController extends BaseController
         endif;
 
         // PATCH (renvoyer que l'élément à modifier)
+        if ($this->HTTPRequest->method() === 'PATCH' && $postId && $post) :
 
+            if ($user && (!empty($_PUT['title']) || !empty($_PUT['content'])) && $user->havePostRights($post)) {
+                $postTitle = empty($_PUT['title']) ? $post->getTitle() : $_PUT['title'];
+                $postContent = empty($_PUT['content']) ? $post->getContent() : $_PUT['content'];
 
-        // Si quelque chose déconne :
+                $post->setTitle($postTitle);
+                $post->setContent($postContent);
+                $success = $postManager->updatePost($post, true);
+
+                if ($success) {
+                    return $this->renderJSON($success);
+                }
+            }
+        endif;
+
+        // DELETE
+        if ($this->HTTPRequest->method() === 'DELETE' && $postId && $post && $user && $user->havePostRights($post)) :
+            $success = $postManager->deletePost($postId);
+
+            if ($success) {
+                return $this->renderJSON([
+                    "status" => 1,
+                    "message" => 'Post deleted'
+                ]);
+            }
+        endif;
+
+        // If something goes wrong :
         $this->HTTPResponse->unauthorized('Basic Auth, Needed arguments : "title" & "content"');
     }
 }
