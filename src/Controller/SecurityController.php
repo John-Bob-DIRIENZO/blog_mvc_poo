@@ -21,18 +21,15 @@ class SecurityController extends BaseController
 
         if ($user !== false && password_verify($_POST['password'], $user->getPassword())) {
             $this->logUser($user);
-            header('Location: /admin');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         elseif ($user !== false && !password_verify($_POST['password'], $user->getPassword())) {
             Flash::setFlash('Wrong Password');
-            header('Location: /login');
-            exit();
+            $this->HTTPResponse->redirect('/login');
         }
         else {
             Flash::setFlash('No User Found');
-            header('Location: /login');
-            exit();
+            $this->HTTPResponse->redirect('/login');
         }
 
     }
@@ -48,8 +45,7 @@ class SecurityController extends BaseController
     public function executeLogout()
     {
         session_destroy();
-        header('Location: /');
-        exit();
+        $this->HTTPResponse->redirect('/');
     }
 
     public function executeSignup()
@@ -70,24 +66,19 @@ class SecurityController extends BaseController
 
             $this->logUser($manager->addUser($newUser));
 
-            header('Location: /');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         elseif ($manager->userExists($_POST['email'])) {
             Flash::setFlash('The user already exists');
-            header('Location: /signup');
-            exit();
         }
         elseif ($_POST['password'] !== $_POST['password_check']) {
             Flash::setFlash('Passwords are not identical');
-            header('Location: /signup');
-            exit();
         }
         else {
             Flash::setFlash('Unknown error');
-            header('Location: /signup');
-            exit();
         }
+
+        $this->HTTPResponse->redirect('/signup');
     }
 
     public function executeUpdateUser()
@@ -104,18 +95,15 @@ class SecurityController extends BaseController
             $manager = new UserManager();
             $this->logUser($manager->updateUser($updatedUser));
 
-            header('Location: /admin');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         elseif (self::isAuthenticated() && isset($_POST['userFirstName']) && isset($_POST['userLastName']) && ($_POST['userPassword'] !== $_POST['userCheckPassword'])) {
             Flash::setFlash('Passwords are not identical');
-            header('Location: /admin');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         else {
             Flash::setFlash('Unknown error');
-            header('Location: /');
-            exit();
+            $this->HTTPResponse->redirect('/');
         }
     }
 
@@ -130,8 +118,7 @@ class SecurityController extends BaseController
             Flash::setFlash('Please don\'t delete yourself, you\'ll break everything !');
         }
 
-        header('Location: /userlist');
-        exit();
+        $this->HTTPResponse->redirect('/userlist');
     }
 
     /**

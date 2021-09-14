@@ -17,8 +17,8 @@ class AdminController extends BaseController
         if (SecurityController::isAuthenticated()) {
             return $this->render('Zone Admin', [], 'Admin/index');
         }
-        header('Location: /login');
-        exit();
+
+        $this->HTTPResponse->redirect('/login');
     }
 
     public function executePostComment(): void
@@ -31,13 +31,9 @@ class AdminController extends BaseController
             ));
             $controller = new CommentManager();
             $controller->addComment($comment);
-
-            header('Location: /article/' . $_POST['postId']);
-            exit();
         }
 
-        header('Location: /article/' . $_POST['postId']);
-        exit();
+        $this->HTTPResponse->redirect('/article/' . $_POST['postId']);
     }
 
     public function executeDeleteComment(): void
@@ -50,8 +46,7 @@ class AdminController extends BaseController
             $commentManager->deleteCommentById($this->params['id']);
         }
 
-        header('Location: /article/' . $postId);
-        exit();
+        $this->HTTPResponse->redirect('/article/' . $postId);
     }
 
     public function executeWritePost()
@@ -68,13 +63,10 @@ class AdminController extends BaseController
             $manager = new PostManager();
             $newPost = $manager->addPost($newPost);
 
-            header('Location: /article/' . $newPost->getId());
-            exit();
-        } else {
-            header('Location: /');
-            exit();
+            $this->HTTPResponse->redirect('/article/' . $newPost->getId());
         }
 
+        $this->HTTPResponse->redirect('/');
     }
 
     public function executeDeletePost(): void
@@ -86,8 +78,7 @@ class AdminController extends BaseController
             $postManager->deletePost($this->params['id']);
         }
 
-        header('Location: /');
-        exit();
+        $this->HTTPResponse->redirect('/');
     }
 
     public function executeUpdatePost()
@@ -106,8 +97,8 @@ class AdminController extends BaseController
 
             $manager->updatePost($newPost);
         }
-        header('Location: /article/' . $this->params['id']);
-        exit();
+
+        $this->HTTPResponse->redirect('/article/' . $this->params['id']);
     }
 
     public function executeUserlist()
@@ -119,7 +110,6 @@ class AdminController extends BaseController
             ], 'Admin/userlist');
         }
 
-        header('Location: /');
-        exit();
+        $this->HTTPResponse->redirect('/');
     }
 }

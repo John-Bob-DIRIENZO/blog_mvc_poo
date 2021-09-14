@@ -22,8 +22,7 @@ class FrontController extends BaseController
         $article = $manager->getPostById($this->params['id']);
 
         if (!$article) {
-            header('Location: /');
-            exit();
+            $this->HTTPResponse->redirect('/');
         }
 
         return $this->render($article->getTitle(), ['article' => $article], 'Frontend/show');

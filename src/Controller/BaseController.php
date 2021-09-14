@@ -4,8 +4,13 @@
 namespace Controller;
 
 
+use Vendor\Core\HTTPRequest;
+use Vendor\Core\HTTPResponse;
+
 abstract class BaseController
 {
+    protected $HTTPRequest;
+    protected $HTTPResponse;
     protected $params;
     protected $template = __DIR__ . './../Views/template.php';
     protected $viewsDir = __DIR__ . './../Views/';
@@ -17,6 +22,8 @@ abstract class BaseController
      */
     public function __construct(string $action, array $params = [])
     {
+        $this->HTTPRequest = new HTTPRequest();
+        $this->HTTPResponse = new HTTPResponse();
         $this->params = $params;
 
         $method = 'execute' . ucfirst($action);
