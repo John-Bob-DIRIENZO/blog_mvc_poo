@@ -17,4 +17,6 @@
     <route p="signup" controller="SecurityController" action="signup"/>
     <route p="update-user" controller="SecurityController" action="updateUser" params="id"/>
     <route p="delete-user" controller="SecurityController" action="deleteUser" params="id"/>
+    <!-- REST API -->
+    <route p="posts" controller="ApiController" action="posts" params="id"/>
 </routes>

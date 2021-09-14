@@ -25,13 +25,11 @@ class SecurityController extends BaseController
         }
         elseif ($user !== false && !password_verify($_POST['password'], $user->getPassword())) {
             Flash::setFlash('Wrong Password');
-            $this->HTTPResponse->redirect('/login');
         }
         else {
             Flash::setFlash('No User Found');
-            $this->HTTPResponse->redirect('/login');
         }
-
+        $this->HTTPResponse->redirect('/login');
     }
 
     /**

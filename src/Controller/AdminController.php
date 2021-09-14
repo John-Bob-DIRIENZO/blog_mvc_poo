@@ -66,7 +66,7 @@ class AdminController extends BaseController
             $this->HTTPResponse->redirect('/article/' . $newPost->getId());
         }
 
-        $this->HTTPResponse->redirect('/');
+        $this->HTTPResponse->redirect('/login');
     }
 
     public function executeDeletePost(): void

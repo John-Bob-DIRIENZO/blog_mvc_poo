@@ -48,4 +48,10 @@ abstract class BaseController
         return require $this->template;
 
     }
+
+    public function renderJSON($content)
+    {
+        $this->HTTPResponse->addHeader('Content-Type: application/json');
+        echo json_encode($content, JSON_PRETTY_PRINT);
+    }
 }
