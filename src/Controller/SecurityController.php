@@ -121,12 +121,12 @@ class SecurityController extends BaseController
 
     public function executeDeleteUser()
     {
-        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->isAdmin() && SecurityController::getLoggedUser()->getId() != $this->id) {
+        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->isAdmin() && SecurityController::getLoggedUser()->getId() != $this->params['id']) {
             $userManager = new UserManager();
-            $userManager->deleteUserById($this->id);
+            $userManager->deleteUserById($this->params['id']);
         }
 
-        if (SecurityController::getLoggedUser()->getId() == $this->id) {
+        if (SecurityController::getLoggedUser()->getId() == $this->params['id']) {
             Flash::setFlash('Please don\'t delete yourself, you\'ll break everything !');
         }
 

@@ -6,7 +6,7 @@ namespace Controller;
 
 abstract class BaseController
 {
-    protected $id;
+    protected $params;
     protected $template = __DIR__ . './../Views/template.php';
     protected $viewsDir = __DIR__ . './../Views/';
 
@@ -15,9 +15,9 @@ abstract class BaseController
      * @param string $action
      * @param null $id
      */
-    public function __construct(string $action, $id = null)
+    public function __construct(string $action, array $params = [])
     {
-        $this->id = $id;
+        $this->params = $params;
 
         $method = 'execute' . ucfirst($action);
         if (!is_callable([$this, $method])) {

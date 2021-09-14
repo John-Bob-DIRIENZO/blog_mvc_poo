@@ -19,7 +19,7 @@ class FrontController extends BaseController
     public function executeShow()
     {
         $manager = new PostManager();
-        $article = $manager->getPostById($this->id);
+        $article = $manager->getPostById($this->params['id']);
 
         if (!$article) {
             header('Location: /');

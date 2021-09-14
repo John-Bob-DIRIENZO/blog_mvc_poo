@@ -43,11 +43,11 @@ class AdminController extends BaseController
     public function executeDeleteComment(): void
     {
         $commentManager = new CommentManager();
-        $comment = $commentManager->getCommentById($this->id);
+        $comment = $commentManager->getCommentById($this->params['id']);
         $postId = $comment->getPostId();
 
         if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->haveCommentRights($comment)) {
-            $commentManager->deleteCommentById($this->id);
+            $commentManager->deleteCommentById($this->params['id']);
         }
 
         header('Location: /article/' . $postId);
@@ -80,10 +80,10 @@ class AdminController extends BaseController
     public function executeDeletePost(): void
     {
         $postManager = new PostManager();
-        $post = $postManager->getPostById($this->id);
+        $post = $postManager->getPostById($this->params['id']);
 
         if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($post)) {
-            $postManager->deletePost($this->id);
+            $postManager->deletePost($this->params['id']);
         }
 
         header('Location: /');
@@ -93,20 +93,20 @@ class AdminController extends BaseController
     public function executeUpdatePost()
     {
         $manager = new PostManager();
-        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($manager->getPostById($this->id)) && !isset($_POST['title'])) {
+        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($manager->getPostById($this->params['id'])) && !isset($_POST['title'])) {
             return $this->render('Update article', [
-                'article' => $manager->getPostById($this->id)
+                'article' => $manager->getPostById($this->params['id'])
             ], 'Admin/update-article');
-        } elseif (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($manager->getPostById($this->id)) && isset($_POST['title']) && isset($_POST['content'])) {
+        } elseif (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($manager->getPostById($this->params['id'])) && isset($_POST['title']) && isset($_POST['content'])) {
             $newPost = new Post(array(
-                'id' => $this->id,
+                'id' => $this->params['id'],
                 'title' => $_POST['title'],
                 'content' => $_POST['content']
             ));
 
             $manager->updatePost($newPost);
         }
-        header('Location: /article/' . $this->id);
+        header('Location: /article/' . $this->params['id']);
         exit();
     }
 
