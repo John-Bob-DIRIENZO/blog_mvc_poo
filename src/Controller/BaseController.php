@@ -49,6 +49,9 @@ abstract class BaseController
 
     }
 
+    /**
+     * @param $content
+     */
     public function renderJSON($content)
     {
         $this->HTTPResponse->addHeader('Content-Type: application/json');

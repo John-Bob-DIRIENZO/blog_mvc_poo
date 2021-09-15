@@ -10,6 +10,11 @@ use Vendor\Core\Flash;
 
 class SecurityController extends BaseController
 {
+    /**
+     * Shows the login page if no $_POST
+     * try to log the user with the infos otherwise
+     * @return mixed
+     */
     public function executeLogin()
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
@@ -33,6 +38,7 @@ class SecurityController extends BaseController
     }
 
     /**
+     * Serialize the user entity in $_SESSION
      * @param User $user
      */
     private function logUser(User $user): void
@@ -40,12 +46,20 @@ class SecurityController extends BaseController
         $_SESSION['logged_user'] = serialize($user);
     }
 
+    /**
+     * unsets the user entity from $_SESSION
+     */
     public function executeLogout()
     {
-        session_destroy();
+        unset($_SESSION['logged_user']);
         $this->HTTPResponse->redirect('/');
     }
 
+    /**
+     * Shows the signup page if no $_POST
+     * register the new user otherwise
+     * @return mixed
+     */
     public function executeSignup()
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
@@ -79,6 +93,9 @@ class SecurityController extends BaseController
         $this->HTTPResponse->redirect('/signup');
     }
 
+    /**
+     * Updates user information
+     */
     public function executeUpdateUser()
     {
         if (self::isAuthenticated() && isset($_POST['userFirstName']) && isset($_POST['userLastName']) && ($_POST['userPassword'] === $_POST['userCheckPassword'])) {
@@ -105,6 +122,9 @@ class SecurityController extends BaseController
         }
     }
 
+    /**
+     * Deletes user
+     */
     public function executeDeleteUser()
     {
         if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->isAdmin() && SecurityController::getLoggedUser()->getId() != $this->params['id']) {
@@ -135,6 +155,7 @@ class SecurityController extends BaseController
     }
 
     /**
+     * Returns the user entoty from $_SESSION, null otherwise
      * @return User|null
      */
     public static function getLoggedUser()

@@ -28,7 +28,7 @@
         <p><small>Ecrit par : <?= $comment->getAuthor()->getFirstName(); ?></small></p>
         <p><?= $comment->getContent(); ?></p>
     </div>
-    <?php if (\Controller\SecurityController::getLoggedUser()->haveCommentRights($comment)) : ?>
+    <?php if (\Controller\SecurityController::isAuthenticated() && \Controller\SecurityController::getLoggedUser()->haveCommentRights($comment)) : ?>
         <a href="/delete-comment/<?= $comment->getId(); ?>">Delete comment</a>
     <?php endif; ?>
 <?php endforeach; ?>
