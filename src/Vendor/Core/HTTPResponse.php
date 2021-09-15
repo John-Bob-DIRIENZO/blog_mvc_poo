@@ -36,8 +36,7 @@ class HTTPResponse
         $date = new \DateTime();
         $date->setTimestamp($timestamp);
 
-        $this->addHeader('Cache-Control: public, max-age=300');
+        $this->addHeader('Cache-Control: public, max-age=' . $seconds);
         $this->addHeader('Expires: ' . $date->format('D, j M Y H:i:s') . ' GMT');
-
     }
 }
