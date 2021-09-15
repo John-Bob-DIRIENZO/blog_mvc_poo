@@ -65,6 +65,7 @@ class PostManager extends BaseManager
 
     /**
      * @param Post $post
+     * @param bool $getArray
      * @return Post|bool|array
      */
     public function addPost(Post $post, bool $getArray = false)

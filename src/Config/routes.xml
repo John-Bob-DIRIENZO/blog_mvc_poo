@@ -20,4 +20,5 @@
     <route p="delete-user" controller="SecurityController" action="deleteUser" params="id"/>
     <!-- REST API -->
     <route p="posts" controller="PostController" action="postsApi" params="id,number"/>
+    <route p="comments" controller="CommentController" action="commentsApi" params="id,mainId"/>
 </routes>
