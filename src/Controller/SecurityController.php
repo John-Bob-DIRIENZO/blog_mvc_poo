@@ -10,6 +10,11 @@ use Vendor\Core\Flash;
 
 class SecurityController extends BaseController
 {
+    /**
+     * Shows the login page if no $_POST
+     * try to log the user with the infos otherwise
+     * @return mixed
+     */
     public function executeLogin()
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
@@ -21,23 +26,19 @@ class SecurityController extends BaseController
 
         if ($user !== false && password_verify($_POST['password'], $user->getPassword())) {
             $this->logUser($user);
-            header('Location: /admin');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         elseif ($user !== false && !password_verify($_POST['password'], $user->getPassword())) {
             Flash::setFlash('Wrong Password');
-            header('Location: /login');
-            exit();
         }
         else {
             Flash::setFlash('No User Found');
-            header('Location: /login');
-            exit();
         }
-
+        $this->HTTPResponse->redirect('/login');
     }
 
     /**
+     * Serialize the user entity in $_SESSION
      * @param User $user
      */
     private function logUser(User $user): void
@@ -45,13 +46,20 @@ class SecurityController extends BaseController
         $_SESSION['logged_user'] = serialize($user);
     }
 
+    /**
+     * unsets the user entity from $_SESSION
+     */
     public function executeLogout()
     {
-        session_destroy();
-        header('Location: /');
-        exit();
+        unset($_SESSION['logged_user']);
+        $this->HTTPResponse->redirect('/');
     }
 
+    /**
+     * Shows the signup page if no $_POST
+     * register the new user otherwise
+     * @return mixed
+     */
     public function executeSignup()
     {
         if (empty($_POST['email']) || empty($_POST['password'])) {
@@ -70,26 +78,24 @@ class SecurityController extends BaseController
 
             $this->logUser($manager->addUser($newUser));
 
-            header('Location: /');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         elseif ($manager->userExists($_POST['email'])) {
             Flash::setFlash('The user already exists');
-            header('Location: /signup');
-            exit();
         }
         elseif ($_POST['password'] !== $_POST['password_check']) {
             Flash::setFlash('Passwords are not identical');
-            header('Location: /signup');
-            exit();
         }
         else {
             Flash::setFlash('Unknown error');
-            header('Location: /signup');
-            exit();
         }
+
+        $this->HTTPResponse->redirect('/signup');
     }
 
+    /**
+     * Updates user information
+     */
     public function executeUpdateUser()
     {
         if (self::isAuthenticated() && isset($_POST['userFirstName']) && isset($_POST['userLastName']) && ($_POST['userPassword'] === $_POST['userCheckPassword'])) {
@@ -104,21 +110,21 @@ class SecurityController extends BaseController
             $manager = new UserManager();
             $this->logUser($manager->updateUser($updatedUser));
 
-            header('Location: /admin');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         elseif (self::isAuthenticated() && isset($_POST['userFirstName']) && isset($_POST['userLastName']) && ($_POST['userPassword'] !== $_POST['userCheckPassword'])) {
             Flash::setFlash('Passwords are not identical');
-            header('Location: /admin');
-            exit();
+            $this->HTTPResponse->redirect('/admin');
         }
         else {
             Flash::setFlash('Unknown error');
-            header('Location: /');
-            exit();
+            $this->HTTPResponse->redirect('/');
         }
     }
 
+    /**
+     * Deletes user
+     */
     public function executeDeleteUser()
     {
         if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->isAdmin() && SecurityController::getLoggedUser()->getId() != $this->params['id']) {
@@ -130,8 +136,7 @@ class SecurityController extends BaseController
             Flash::setFlash('Please don\'t delete yourself, you\'ll break everything !');
         }
 
-        header('Location: /userlist');
-        exit();
+        $this->HTTPResponse->redirect('/userlist');
     }
 
     /**
@@ -150,6 +155,7 @@ class SecurityController extends BaseController
     }
 
     /**
+     * Returns the user entoty from $_SESSION, null otherwise
      * @return User|null
      */
     public static function getLoggedUser()

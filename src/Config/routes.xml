@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
-    <!-- FrontEnd -->
-    <route p="" controller="FrontController" action="index"/>
-    <route p="article" controller="FrontController" action="show" params="id"/>
+    <!-- Posts -->
+    <route p="" controller="PostController" action="showMany"/>
+    <route p="article" controller="PostController" action="showOne" params="id"/>
+    <route p="write-article" controller="PostController" action="writePost"/>
+    <route p="delete-article" controller="PostController" action="deletePost" params="id"/>
+    <route p="update-article" controller="PostController" action="updatePost" params="id"/>
+    <!-- Comments -->
+    <route p="post-comment" controller="CommentController" action="postComment"/>
+    <route p="delete-comment" controller="CommentController" action="deleteComment" params="id"/>
     <!-- Admin -->
     <route p="admin" controller="AdminController" action="index"/>
-    <route p="post-comment" controller="AdminController" action="postComment"/>
-    <route p="delete-comment" controller="AdminController" action="deleteComment" params="id"/>
-    <route p="write-article" controller="AdminController" action="writePost"/>
-    <route p="delete-article" controller="AdminController" action="deletePost" params="id"/>
-    <route p="update-article" controller="AdminController" action="updatePost" params="id"/>
     <route p="userlist" controller="AdminController" action="userlist"/>
     <!-- Security -->
     <route p="login" controller="SecurityController" action="login"/>
@@ -17,4 +18,6 @@
     <route p="signup" controller="SecurityController" action="signup"/>
     <route p="update-user" controller="SecurityController" action="updateUser" params="id"/>
     <route p="delete-user" controller="SecurityController" action="deleteUser" params="id"/>
+    <!-- REST API -->
+    <route p="posts" controller="PostController" action="postsApi" params="id"/>
 </routes>

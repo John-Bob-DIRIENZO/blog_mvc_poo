@@ -35,7 +35,7 @@ class UserManager extends BaseManager
      * @param string $email
      * @return User|bool
      */
-    public function getUserByEmail(string $email)
+    public function getUserByEmail(string $email = null)
     {
         $query = $this->db->prepare('SELECT * FROM users WHERE email = :email');
         $query->bindValue(':email', $email, \PDO::PARAM_STR);
@@ -63,6 +63,26 @@ class UserManager extends BaseManager
     public function userMatches(User $user): bool
     {
         return $this->getUserByEmail($user->getEmail())->getPassword() === $user->getPassword();
+    }
+
+    /**
+     * @param null $login
+     * @param null $password
+     * @return User|bool
+     */
+    public function checkCredentials($login = null, $password = null)
+    {
+        if ( !is_string($login) || !is_string($password)) {
+            return false;
+        }
+
+        $manager = new UserManager();
+        $user = $manager->getUserByEmail($login);
+
+        if ($user !== false && password_verify($password, $user->getPassword())) {
+            return $user;
+        }
+        return false;
     }
 
     /**
