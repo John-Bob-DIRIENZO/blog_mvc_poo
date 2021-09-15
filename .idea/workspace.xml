@@ -2,26 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/aria_log.00000001" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log.00000001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/aria_log_control" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/comments.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/comments.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/cours_mvc/posts.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/posts.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ddl_recovery.log" beforeDir="false" afterPath="$PROJECT_DIR$/database/ddl_recovery.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/users.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/users.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_buffer_pool" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_logfile0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/database/ibdata1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql/innodb_index_stats.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql/innodb_table_stats.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config/routes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/routes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ErrorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ErrorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +72,7 @@
       <workItem from="1631607949706" duration="3068000" />
       <workItem from="1631618835639" duration="17934000" />
       <workItem from="1631693621369" duration="2361000" />
-      <workItem from="1631696564950" duration="531000" />
+      <workItem from="1631696564950" duration="1274000" />
     </task>
     <servers />
   </component>
