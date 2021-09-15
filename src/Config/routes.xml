@@ -19,5 +19,5 @@
     <route p="update-user" controller="SecurityController" action="updateUser" params="id"/>
     <route p="delete-user" controller="SecurityController" action="deleteUser" params="id"/>
     <!-- REST API -->
-    <route p="posts" controller="PostController" action="postsApi" params="id"/>
+    <route p="posts" controller="PostController" action="postsApi" params="id,number"/>
 </routes>

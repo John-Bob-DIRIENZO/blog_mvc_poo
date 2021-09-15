@@ -127,7 +127,7 @@ class PostController extends BaseController
             switch ($postId) {
                 case false:
                     $this->HTTPResponse->setCacheHeader(300);
-                    isset($_GET['number']) ? $number = abs(intval($_GET['number'])) : $number = null;
+                    isset($this->params['number']) ? $number = abs(intval($this->params['number'])) : $number = null;
                     return $this->renderJSON($postManager->getPosts($number, true));
 
                 case true:

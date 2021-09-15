@@ -22,7 +22,7 @@ class Router
                 $action = $route->getAttribute('action');
                 $params = [];
                 if ($route->hasAttribute('params')) {
-                    $keys = explode(',',$route->getAttribute('params'));
+                    $keys = explode(',', $route->getAttribute('params'));
                     foreach ($keys as $key) {
                         $params[$key] = $_GET[$key];
                     }
@@ -32,6 +32,5 @@ class Router
         }
 
         return new ErrorController('noRoute');
-
     }
 }
