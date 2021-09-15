@@ -8,6 +8,12 @@
     <a href="/update-article/<?= $vars['article']->getId(); ?>">Update article</a>
 <?php endif; ?>
 
+<?php if ($vars['article']->hasImage()) : ?>
+    <div>
+        <img src="<?= $vars['article']->getImageUrl(); ?>" style="max-width: 500px; max-height: 300px"/>
+    </div>
+<?php endif; ?>
+
 <p><?= $vars['article']->getContent(); ?></p>
 
 <!-- Comments -->

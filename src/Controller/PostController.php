@@ -5,6 +5,7 @@ namespace Controller;
 
 
 use Entity\Post;
+use Model\ImageManager;
 use Model\PostManager;
 use Model\UserManager;
 
@@ -56,6 +57,12 @@ class PostController extends BaseController
                 'authorId' => SecurityController::getLoggedUser()->getId()
             ));
 
+            $imageManager = new ImageManager();
+            $image = $imageManager->uploadImage($_FILES['image']);
+            if ($image) {
+                $newPost->setImageId($image->getId());
+            }
+
             $manager = new PostManager();
             $newPost = $manager->addPost($newPost);
 
@@ -90,17 +97,27 @@ class PostController extends BaseController
     public function executeUpdatePost()
     {
         $manager = new PostManager();
-        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($manager->getPostById($this->params['id'])) && !isset($_POST['title'])) {
+        $post = $manager->getPostById($this->params['id']);
+        if (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($post) && !isset($_POST['title'])) {
             return $this->render('Update article', [
-                'article' => $manager->getPostById($this->params['id'])
+                'article' => $post
             ], 'Admin/update-article');
-        } elseif (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($manager->getPostById($this->params['id'])) && isset($_POST['title']) && isset($_POST['content'])) {
+        } elseif (SecurityController::isAuthenticated() && SecurityController::getLoggedUser()->havePostRights($post) && isset($_POST['title']) && isset($_POST['content'])) {
             $newPost = new Post(array(
                 'id' => $this->params['id'],
                 'title' => $_POST['title'],
                 'content' => $_POST['content']
             ));
 
+            $imageManager = new ImageManager();
+            $image = $imageManager->uploadImage($_FILES['image']);
+
+            if ($image) {
+                $newPost->setImageId($image->getId());
+            } else {
+                $newPost->setImageId($post->getImageId());
+            }
+            
             $manager->updatePost($newPost);
         }
 

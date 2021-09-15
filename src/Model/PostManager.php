@@ -70,10 +70,11 @@ class PostManager extends BaseManager
      */
     public function addPost(Post $post, bool $getArray = false)
     {
-        $insert = $this->db->prepare('INSERT INTO posts (title, content, authorId) VALUES (:title, :content, :authorId)');
+        $insert = $this->db->prepare('INSERT INTO posts (title, content, authorId, imageId) VALUES (:title, :content, :authorId, :imageId)');
         $insert->bindValue(':title', htmlspecialchars($post->getTitle()), \PDO::PARAM_STR);
         $insert->bindValue(':content', nl2br(htmlspecialchars($post->getContent())), \PDO::PARAM_STR);
         $insert->bindValue(':authorId', $post->getAuthorId(), \PDO::PARAM_INT);
+        $insert->bindValue(':imageId', $post->getImageId(), \PDO::PARAM_INT);
 
         return $insert->execute() ? $this->getPostById($this->db->lastInsertId(), $getArray) : false;
     }
@@ -84,10 +85,11 @@ class PostManager extends BaseManager
      */
     public function updatePost(Post $post, bool $getArray = false)
     {
-        $update = $this->db->prepare('UPDATE posts SET title = :title, content = :content WHERE id =:id');
+        $update = $this->db->prepare('UPDATE posts SET title = :title, content = :content, imageId = :imageId WHERE id =:id');
         $update->bindValue(':title', htmlspecialchars($post->getTitle()), \PDO::PARAM_STR);
         $update->bindValue(':content', nl2br(htmlspecialchars($post->getContent())), \PDO::PARAM_STR);
         $update->bindValue(':id', $post->getId(), \PDO::PARAM_INT);
+        $update->bindValue(':imageId', $post->getImageId(), \PDO::PARAM_INT);
 
         return $update->execute() ? $this->getPostById($post->getId(), $getArray): false;
     }

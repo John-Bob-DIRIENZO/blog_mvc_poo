@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/Image.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/ImageManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/src/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config/routes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/routes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CommentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CommentManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/posts.frm" beforeDir="false" afterPath="$PROJECT_DIR$/database/cours_mvc/posts.frm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ddl_recovery.log" beforeDir="false" afterPath="$PROJECT_DIR$/database/ddl_recovery.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/PostManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PostManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Admin/update-article.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Admin/update-article.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Admin/write-article.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Admin/write-article.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Frontend/show.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +76,7 @@
       <workItem from="1631700002694" duration="73000" />
       <workItem from="1631706337946" duration="3159000" />
       <workItem from="1631719257523" duration="3166000" />
+      <workItem from="1631736202565" duration="9294000" />
     </task>
     <servers />
   </component>

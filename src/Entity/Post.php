@@ -5,6 +5,7 @@ namespace Entity;
 
 
 use Model\CommentManager;
+use Model\ImageManager;
 use Model\UserManager;
 
 class Post extends BaseEntity
@@ -14,6 +15,7 @@ class Post extends BaseEntity
     private $title;
     private $content;
     private $authorId;
+    private $imageId;
 
     /**
      * @return mixed
@@ -111,5 +113,36 @@ class Post extends BaseEntity
     {
         $manager = new CommentManager();
         return $manager->getCommentsByPostId($this->id);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageId()
+    {
+        return $this->imageId;
+    }
+
+    /**
+     * @param mixed $imageId
+     */
+    public function setImageId($imageId): void
+    {
+        $this->imageId = $imageId;
+    }
+
+
+    public function hasImage(): bool
+    {
+        return $this->imageId !== null;
+    }
+
+    public function getImageUrl()
+    {
+        $manager = new ImageManager();
+        $image = $manager->getImageById($this->imageId);
+        $url = $image ? $image->buildUrl() : null;
+
+        return $url;
     }
 }
