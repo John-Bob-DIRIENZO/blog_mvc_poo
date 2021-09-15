@@ -126,13 +126,15 @@ class PostController extends BaseController
         if ($this->HTTPRequest->method() === 'GET') :
             switch ($postId) {
                 case false:
+                    $this->HTTPResponse->setCacheHeader(300);
                     return $this->renderJSON($postManager->getPosts(null, true));
 
                 case true:
                     $post = $postManager->getPostById($postId, true);
                     if (empty($post)) {
-                        return new ErrorController('noRoute');
+                        return new ErrorController('noRouteJSON');
                     }
+                    $this->HTTPResponse->setCacheHeader(300);
                     return $this->renderJSON($post);
             }
         endif;
@@ -149,6 +151,7 @@ class PostController extends BaseController
                 $success = $postManager->addPost($newPost, true);
 
                 if ($success) {
+                    $this->HTTPResponse->setCacheHeader(300);
                     return $this->renderJSON($success);
                 }
             }
@@ -163,6 +166,7 @@ class PostController extends BaseController
                 $success = $postManager->updatePost($post, true);
 
                 if ($success) {
+                    $this->HTTPResponse->setCacheHeader(300);
                     return $this->renderJSON($success);
                 }
             }
@@ -180,6 +184,7 @@ class PostController extends BaseController
                 $success = $postManager->updatePost($post, true);
 
                 if ($success) {
+                    $this->HTTPResponse->setCacheHeader(300);
                     return $this->renderJSON($success);
                 }
             }
@@ -198,6 +203,9 @@ class PostController extends BaseController
         endif;
 
         // If something goes wrong :
-        $this->HTTPResponse->unauthorized('Basic Auth, Needed arguments : "title" & "content"');
+        $this->HTTPResponse->unauthorized([
+            'Authentication' => "Basic",
+            "Needed arguments" => ['title', 'content']
+        ]);
     }
 }
