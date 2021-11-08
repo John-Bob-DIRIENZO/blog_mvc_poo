@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+    <!-- Posts -->
+    <route p="" controller="PostController" action="showMany"/>
+    <route p="article" controller="PostController" action="showOne" params="id"/>
+    <route p="write-article" controller="PostController" action="writePost"/>
+    <route p="delete-article" controller="PostController" action="deletePost" params="id"/>
+    <route p="update-article" controller="PostController" action="updatePost" params="id"/>
+    <!-- Comments -->
+    <route p="post-comment" controller="CommentController" action="postComment"/>
+    <route p="delete-comment" controller="CommentController" action="deleteComment" params="id"/>
+    <!-- Admin -->
+    <route p="admin" controller="AdminController" action="index"/>
+    <route p="userlist" controller="AdminController" action="userlist"/>
+    <!-- Security -->
+    <route p="login" controller="SecurityController" action="login"/>
+    <route p="logout" controller="SecurityController" action="logout"/>
+    <route p="signup" controller="SecurityController" action="signup"/>
+    <route p="update-user" controller="SecurityController" action="updateUser" params="id"/>
+    <route p="delete-user" controller="SecurityController" action="deleteUser" params="id"/>
+    <!-- REST API -->
+    <route p="posts" controller="PostController" action="postsApi" params="id,number"/>
+    <route p="comments" controller="CommentController" action="commentsApi" params="id,mainId"/>
+</routes>
