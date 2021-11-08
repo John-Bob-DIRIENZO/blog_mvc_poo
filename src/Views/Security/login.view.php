@@ -1,14 +1,18 @@
-<h1>Please LogIn</h1>
+<h1 class="text-center mb-5">Please LogIn</h1>
 
-<?php if (\Vendor\Core\Flash::hasFlash()) : ?>
-    <?= \Vendor\Core\Flash::getFlash(); ?>
-<?php endif; ?>
+<form method="post" class="mx-auto" style="max-width: 400px">
 
-<form method="post">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required/> <br/>
+    <div class="form-floating mb-3">
+        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required/>
+        <label for="email">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required/>
+        <label for="password">Password</label>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required/> <br/>
-    <input type="submit" value="LogIn"/>
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary w-100" value="LogIn"/>
+    </div>
+
 </form>

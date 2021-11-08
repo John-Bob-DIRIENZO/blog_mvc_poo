@@ -1,7 +1,4 @@
-<?php if (\Vendor\Core\Flash::hasFlash()) : ?>
-    <?= \Vendor\Core\Flash::getFlash(); ?>
-<?php endif; ?>
-<table>
+<table class="table table-striped">
     <tr>
         <th>First Name</th>
         <th>Last Name</th>

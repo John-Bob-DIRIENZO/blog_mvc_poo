@@ -32,7 +32,7 @@ class UserManager extends BaseManager
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return User|bool
      */
     public function getUserByEmail(string $email = null)
@@ -76,8 +76,7 @@ class UserManager extends BaseManager
             return false;
         }
 
-        $manager = new UserManager();
-        $user = $manager->getUserByEmail($login);
+        $user = $this->getUserByEmail($login);
 
         if ($user !== false && password_verify($password, $user->getPassword())) {
             return $user;
