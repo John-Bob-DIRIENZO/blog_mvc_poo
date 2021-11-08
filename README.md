@@ -10,9 +10,11 @@ qui va aller installer les extensions PHP et activer la
 réécriture d'URL de Apache
 
 Il est moins poussé que le micro-framework que j'ai fait plus bas
-mais il est quand même fonctionnel, normalement avec un
-système d'images qui marche (j'ai eu des galères avec la DB
-qui voulait pas se persister correctement...)
+mais il est quand même fonctionnel
+
+# Problème de DB
+Pour une raison que j'ignore, la DB ne se persiste pas correctement avec la table
+images
 
 ## Run
 ```

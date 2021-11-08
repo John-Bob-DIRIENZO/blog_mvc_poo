@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="" />
+    <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/images.frm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cours_mvc/images.ibd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ddl_recovery-backup.log" beforeDir="false" afterPath="$PROJECT_DIR$/database/ddl_recovery-backup.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ddl_recovery.log" beforeDir="false" afterPath="$PROJECT_DIR$/database/ddl_recovery.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +72,7 @@
       <workItem from="1631736202565" duration="10112000" />
       <workItem from="1631748114360" duration="507000" />
       <workItem from="1636376363216" duration="1174000" />
+      <workItem from="1636377662037" duration="300000" />
     </task>
     <servers />
   </component>
