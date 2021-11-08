@@ -1,11 +1,18 @@
 # Le retour du petit CRUD entre amis !
-Voilà un petit exemple de CRUD avec une architecture MVC, orienté objet et le tout, full vanilla PHP
+Voilà un petit exemple de CRUD avec une architecture MVC, 
+orienté objet et le tout, full vanilla PHP
 
-Pour l'instant c'est encore sacrément moche et ça terminera pas tellement plus beau (avec un peu de bootstrap histoire de dire)
+J'ai mis un peu de bootstrap histoire que ce soit
+moins laid
 
- * **/signup** : pour vour créer un compte
+Tout une config Docker est déjà prête avec un Dockerfile 
+qui va aller installer les extensions PHP et activer la 
+réécriture d'URL de Apache
 
-Tout une config Docker est déjà prête avec un Dockerfile qui va aller installer les extensions PHP et activer la réécriture d'URL de Apache
+Il est moins poussé que le micro-framework que j'ai fait plus bas
+mais il est quand même fonctionnel, normalement avec un
+système d'images qui marche (j'ai eu des galères avec la DB
+qui voulait pas se persister correctement...)
 
 ## Run
 ```
