@@ -117,7 +117,7 @@ class PostController extends BaseController
             } else {
                 $newPost->setImageId($post->getImageId());
             }
-            
+
             $manager->updatePost($newPost);
         }
 
@@ -145,6 +145,8 @@ class PostController extends BaseController
                 case false:
                     $this->HTTPResponse->setCacheHeader(300);
                     isset($this->params['number']) ? $number = abs(intval($this->params['number'])) : $number = null;
+                    $this->HTTPResponse->setCacheHeader(500);
+                    $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
                     return $this->renderJSON($postManager->getPosts($number, true));
 
                 case true:
@@ -152,7 +154,8 @@ class PostController extends BaseController
                     if (empty($post)) {
                         return new ErrorController('noRouteJSON');
                     }
-                    $this->HTTPResponse->setCacheHeader(300);
+                    $this->HTTPResponse->setCacheHeader(500);
+                    $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
                     return $this->renderJSON($post);
             }
         endif;
@@ -169,7 +172,8 @@ class PostController extends BaseController
                 $success = $postManager->addPost($newPost, true);
 
                 if ($success) {
-                    $this->HTTPResponse->setCacheHeader(300);
+                    $this->HTTPResponse->setCacheHeader(500);
+                    $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
                     return $this->renderJSON($success);
                 }
             }
@@ -184,7 +188,8 @@ class PostController extends BaseController
                 $success = $postManager->updatePost($post, true);
 
                 if ($success) {
-                    $this->HTTPResponse->setCacheHeader(300);
+                    $this->HTTPResponse->setCacheHeader(500);
+                    $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
                     return $this->renderJSON($success);
                 }
             }
@@ -202,7 +207,8 @@ class PostController extends BaseController
                 $success = $postManager->updatePost($post, true);
 
                 if ($success) {
-                    $this->HTTPResponse->setCacheHeader(300);
+                    $this->HTTPResponse->setCacheHeader(500);
+                    $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
                     return $this->renderJSON($success);
                 }
             }
@@ -213,6 +219,7 @@ class PostController extends BaseController
             $success = $postManager->deletePost($postId);
 
             if ($success) {
+                $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
                 return $this->renderJSON([
                     "status" => 1,
                     "message" => 'Post deleted'

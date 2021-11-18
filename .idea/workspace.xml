@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="12054190-4f6e-416a-aee8-3ed8499f2008" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/aria_log.00000001" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log.00000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/aria_log_control" beforeDir="false" afterPath="$PROJECT_DIR$/database/aria_log_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/database/ib_buffer_pool" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/database/ibdata1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +69,9 @@
       <workItem from="1631748114360" duration="507000" />
       <workItem from="1636376363216" duration="1174000" />
       <workItem from="1636377662037" duration="537000" />
-      <workItem from="1636378626471" duration="80000" />
+      <workItem from="1636378626471" duration="170000" />
+      <workItem from="1636380300372" duration="57000" />
+      <workItem from="1636455807628" duration="283000" />
     </task>
     <servers />
   </component>
