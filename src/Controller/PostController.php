@@ -133,6 +133,11 @@ class PostController extends BaseController
         $postManager = new PostManager();
         $userManager = new UserManager();
 
+        $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: http://localhost:3000');
+        $this->HTTPResponse->addHeader('Access-Control-Allow-Headers: authorization'); // ATTENTION, c'est case sensitive
+        $this->HTTPResponse->addHeader('Access-Control-Allow-Credentials: true');
+        $this->HTTPResponse->addHeader('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+
         $user = $userManager->checkCredentials($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
         $postId = !empty($this->params['id']) ? $this->params['id'] : false;
         $post = $postManager->postExists($postId) ? $postManager->getPostById($postId) : false;
@@ -163,6 +168,8 @@ class PostController extends BaseController
         // POST
         if ($this->HTTPRequest->method() === 'POST' && !$postId) :
 
+            $this->HTTPResponse->addHeader('Content-Type: application/json');
+
             if ($user && !empty($_POST['title']) && !empty($_POST['content'])) {
                 $newPost = new Post(array(
                     'title' => $_POST['title'],
@@ -173,7 +180,8 @@ class PostController extends BaseController
 
                 if ($success) {
                     $this->HTTPResponse->setCacheHeader(500);
-                    $this->HTTPResponse->addHeader('Access-Control-Allow-Origin: *');
+
+
                     return $this->renderJSON($success);
                 }
             }
@@ -228,9 +236,9 @@ class PostController extends BaseController
         endif;
 
         // If something goes wrong :
-        $this->HTTPResponse->unauthorized([
-            'Authentication' => "Basic",
-            "Needed arguments" => ['title', 'content']
-        ]);
+        // $this->HTTPResponse->unauthorized([
+        //     'Authentication' => "Basic",
+        //     "Needed arguments" => ['title', 'content']
+        // ]);
     }
 }
